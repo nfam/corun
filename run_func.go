@@ -101,6 +101,9 @@ func RunFunc[Input any, Result any](
 				}
 				if !ok {
 					fetched = true
+					if complete >= count {
+						return nil
+					}
 				} else {
 					count++
 					inputCh <- x
