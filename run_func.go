@@ -77,6 +77,11 @@ func RunFunc[Input any, Result any](
 			inputCh <- x
 		}
 
+		// No input was fetched.
+		if fetched && count == 0 {
+			return nil
+		}
+
 		for {
 			select {
 			case <-ctx.Done():
